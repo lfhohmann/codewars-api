@@ -4,22 +4,22 @@ from src.main import Codewars
 
 
 class GetData(TestCase):
-    codewars = Codewars()
-
     def test_users(self):
         USERS = ["lfhohmann", "jhoffner", "lymanchou"]
+        codewars = Codewars()
 
         for user in USERS:
-            payload = self.codewars.get_user(user)
+            payload = codewars.get_user(user)
 
             self.assertIsInstance(payload, dict)
             self.assertIsNotNone(payload)
 
     def test_katas(self):
         KATAS = ["valid-braces", "vin-checker", "squared-spiral-number-1"]
+        codewars = Codewars()
 
         for kata in KATAS:
-            payload = self.codewars.get_kata(kata)
+            payload = codewars.get_kata(kata)
 
             self.assertIsInstance(payload, dict)
             self.assertIsNotNone(payload)
