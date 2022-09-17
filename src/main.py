@@ -1,8 +1,9 @@
 import requests
+from .consts import *
 
 
 class Codewars:
-    api_url = f"https://www.codewars.com/api/v1"
+    api_url = API_URL
 
     def _get_data(self, path: str) -> dict:
         """Retrieve JSON data from the specified path"""
