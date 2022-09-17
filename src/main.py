@@ -1,4 +1,5 @@
 import requests
+
 from .consts import *
 
 
@@ -18,3 +19,9 @@ class Codewars:
 
         # Load JSON and return it
         return data.json()
+
+    def get_user(self, username: str) -> dict:
+        return self._get_data(f"users/{username}")
+
+    def get_kata(self, name: str) -> dict:
+        return self._get_data(f"code-challenges/{name}")
