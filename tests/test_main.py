@@ -23,3 +23,15 @@ class GetData(TestCase):
 
             self.assertIsInstance(payload, dict)
             self.assertIsNotNone(payload)
+
+    def test_invalid_url(self):
+        URLS = [
+            "https://codewars.com",
+            "https://www.codewars.com/api/",
+        ]
+
+        for url in URLS:
+            codewars = Codewars()
+            codewars.api_url = url
+
+            self.assertIsNone(codewars.get_kata("vin-checker"))
