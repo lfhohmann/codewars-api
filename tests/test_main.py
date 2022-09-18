@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.main import Codewars
+from src.main import Codewars, Kata, User
 
 
 class GetData(TestCase):
@@ -11,7 +11,7 @@ class GetData(TestCase):
         for user in USERS:
             payload = codewars.get_user(user)
 
-            self.assertIsInstance(payload, dict)
+            self.assertIsInstance(payload, User)
             self.assertIsNotNone(payload)
 
     def test_katas(self):
@@ -21,7 +21,7 @@ class GetData(TestCase):
         for kata in KATAS:
             payload = codewars.get_kata(kata)
 
-            self.assertIsInstance(payload, dict)
+            self.assertIsInstance(payload, Kata)
             self.assertIsNotNone(payload)
 
     def test_invalid_url(self):

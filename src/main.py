@@ -36,10 +36,18 @@ class Codewars:
         # Load JSON and return it
         return data.json()
 
-    def get_user(self, username: str) -> dict:
+    def get_user(self, username: str) -> User:
         data = self._get_data(f"users/{username}")
-        return User(data)
 
-    def get_kata(self, name: str) -> dict:
+        if data:
+            return User(data)
+
+        return None
+
+    def get_kata(self, name: str) -> Kata:
         data = self._get_data(f"code-challenges/{name}")
-        return Kata(data)
+
+        if data:
+            return Kata(data)
+
+        return None
