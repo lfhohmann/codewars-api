@@ -3,6 +3,22 @@ import requests
 from .consts import *
 
 
+class User:
+    def __init__(self, data: dict) -> None:
+        self.__dict__ = data
+
+    def __repr__(self) -> str:
+        return f"User({self.username})"
+
+
+class Kata:
+    def __init__(self, data: dict) -> None:
+        self.__dict__ = data
+
+    def __repr__(self) -> str:
+        return f"Kata({self.name})"
+
+
 class Codewars:
     api_url = API_URL
 
@@ -21,7 +37,9 @@ class Codewars:
         return data.json()
 
     def get_user(self, username: str) -> dict:
-        return self._get_data(f"users/{username}")
+        data = self._get_data(f"users/{username}")
+        return User(data)
 
     def get_kata(self, name: str) -> dict:
-        return self._get_data(f"code-challenges/{name}")
+        data = self._get_data(f"code-challenges/{name}")
+        return Kata(data)
