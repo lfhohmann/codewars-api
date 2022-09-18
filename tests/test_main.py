@@ -10,9 +10,7 @@ class GetData(TestCase):
 
         for user in USERS:
             payload = codewars.get_user(user)
-
             self.assertIsInstance(payload, User)
-            self.assertIsNotNone(payload)
 
     def test_katas(self):
         KATAS = ["valid-braces", "vin-checker", "squared-spiral-number-1"]
@@ -20,9 +18,7 @@ class GetData(TestCase):
 
         for kata in KATAS:
             payload = codewars.get_kata(kata)
-
             self.assertIsInstance(payload, Kata)
-            self.assertIsNotNone(payload)
 
     def test_invalid_url(self):
         URLS = [
